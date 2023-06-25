@@ -48,3 +48,23 @@ function repeatChar(char, times) {
   }
   return outputStr;
 }
+
+/**
+ * 
+ */
+function strOfPlace(num, place, timesOneChar, timesFiveChar, timesTenChar) {
+  let value = (Math.floor(num / place)) % (place * 10);
+  if (value === 9) return timesOneChar + timesTenChar;
+  else if (value >= 5) return timesFiveChar + repeatChar(timesOneChar, (value-5));
+  else if (value === 4) return timesFiveChar + timesOneChar;
+  else return repeatChar(timesOneChar, value);
+}
+
+function intToRoman(num) {
+  let outputStr = '';
+  outputStr += strOfPlace(num, 1000, 'M', '', '');
+  outputStr += strOfPlace(num, 100, 'C', 'D', 'M');
+  outputStr += strOfPlace(num, 10, 'X', 'L', 'C');
+  outputStr += strOfPlace(num, 1, 'I', 'V', 'X');
+  return outputStr;
+}
