@@ -5,9 +5,7 @@
  */
 var minSubArrayLen = function(target, nums) {
 
-  if (nums.length === 1) {
-    return nums[0] >= target ? 1 : 0;
-  }
+
 
   let leftIndex = 0;
   let rightIndex = 1;
