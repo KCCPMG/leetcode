@@ -1,146 +1,146 @@
-/**
- * @param {number[]} prices
- * @return {number}
- */
-var maxProfit = function(prices) {
+// /**
+//  * @param {number[]} prices
+//  * @return {number}
+//  */
+// var maxProfit = function(prices) {
 
-  if (prices.length === 1) return 0;
+//   if (prices.length === 1) return 0;
   
-  let max = 0;
+//   let max = 0;
 
-  for (let leftIndex=0; leftIndex<prices.length; leftIndex++) {
-    let leftValue = prices[leftIndex];
-    for (let rightIndex=leftIndex+1; rightIndex<prices.length; rightIndex++) {
-      let rightValue = prices[rightIndex];
-      let split = rightValue - leftValue;
-      if (split > max) max = split;
-    }
-  }
+//   for (let leftIndex=0; leftIndex<prices.length; leftIndex++) {
+//     let leftValue = prices[leftIndex];
+//     for (let rightIndex=leftIndex+1; rightIndex<prices.length; rightIndex++) {
+//       let rightValue = prices[rightIndex];
+//       let split = rightValue - leftValue;
+//       if (split > max) max = split;
+//     }
+//   }
 
-  return max;
+//   return max;
   
-};
+// };
 
 
-/**
- * @param {number[]} prices
- * @return {number}
- */
-var maxProfit = function(prices) {
+// /**
+//  * @param {number[]} prices
+//  * @return {number}
+//  */
+// var maxProfit = function(prices) {
 
-  const hashmap = {};
-  for (let i=0; i<prices.length; i++) {
-    if (hashmap[prices[i]]) {
-      hashmap[prices[i]].push(i);
-    } else {
-      hashmap[prices[i]] = [i];
-    }
-  }
-
-
-  let uniquePrices = Object.keys(hashmap)
-    .map(char => +char)
-    .sort((a,b) => a-b);
-
-  console.log(uniquePrices);
-
-  let max = 0;
-  let leftIndex = 0;
-  let rightIndex = uniquePrices.length-1;
-
-  while (leftIndex < rightIndex) {
-
-    let rightValue = uniquePrices[rightIndex];
-    let leftValue = uniquePrices[leftIndex];
-
-    let nextRight = uniquePrices[rightIndex-1];
-    let nextLeft = uniquePrices[leftIndex+1];
-
-    let current = rightValue-leftValue;
-    if (current >= max) {
-      let earliestBuyDate = Math.min(...hashmap[leftValue]);
-      let latestSellDate = Math.max(...hashmap[rightValue]);
-      console.log("current > max:", {"hashmapLeft": hashmap[leftValue], "hashmapRight": hashmap[rightValue], earliestBuyDate, latestSellDate});
-      if (earliestBuyDate < latestSellDate) {
-        max = Math.max(current, max);
-      }
-    } 
-
-    console.log({
-      leftIndex, rightIndex, leftValue, rightValue, max
-    })
-
-    if ((nextRight - leftValue) > (rightValue - nextLeft)) {
-      rightIndex--;
-    } else leftIndex++;
-
-  }
-
-  return max;
-
-  // return max;
-
-  // let highest = Math.max(uniquePrices);
-  // let lowest = Math.min(uniquePrices);
-
-  // if (Math.max(hashmap[highest]) > Math.min(hashmap[lowest])) return (highest-lowest);
-
-}
+//   const hashmap = {};
+//   for (let i=0; i<prices.length; i++) {
+//     if (hashmap[prices[i]]) {
+//       hashmap[prices[i]].push(i);
+//     } else {
+//       hashmap[prices[i]] = [i];
+//     }
+//   }
 
 
-/**
- * @param {number[]} prices
- * @return {number}
- */
-var maxProfit = function(prices) {
+//   let uniquePrices = Object.keys(hashmap)
+//     .map(char => +char)
+//     .sort((a,b) => a-b);
 
-  let checks = [];
+//   console.log(uniquePrices);
 
-  let lowest = 10001;
-  let highest = -10001;
+//   let max = 0;
+//   let leftIndex = 0;
+//   let rightIndex = uniquePrices.length-1;
 
-  for (let price of prices) {
-    if (price < lowest) {
-      lowest = price;
-      checks.push({lowest, highest, difference: highest-lowest})
-    } 
-    if (price > highest) {
-      highest = price;
-      checks.push({lowest,highest, difference: highest-lowest})
-    }
-  }
+//   while (leftIndex < rightIndex) {
 
-  console.log(checks);
+//     let rightValue = uniquePrices[rightIndex];
+//     let leftValue = uniquePrices[leftIndex];
 
-  return Math.max(0, ...(checks.map(ch => ch.difference)));
+//     let nextRight = uniquePrices[rightIndex-1];
+//     let nextLeft = uniquePrices[leftIndex+1];
 
-}
+//     let current = rightValue-leftValue;
+//     if (current >= max) {
+//       let earliestBuyDate = Math.min(...hashmap[leftValue]);
+//       let latestSellDate = Math.max(...hashmap[rightValue]);
+//       console.log("current > max:", {"hashmapLeft": hashmap[leftValue], "hashmapRight": hashmap[rightValue], earliestBuyDate, latestSellDate});
+//       if (earliestBuyDate < latestSellDate) {
+//         max = Math.max(current, max);
+//       }
+//     } 
 
+//     console.log({
+//       leftIndex, rightIndex, leftValue, rightValue, max
+//     })
 
-/**
- * @param {number[]} prices
- * @return {number}
- */
-var maxProfit = function(prices) {
+//     if ((nextRight - leftValue) > (rightValue - nextLeft)) {
+//       rightIndex--;
+//     } else leftIndex++;
 
-  const filtered = [];
-  let lowest = 10001;
-  let highest = -10001;
+//   }
 
-  for (let price of prices) {
-    if (price < lowest) {
-      lowest = price;
-      filtered.push(price);
-    } 
-    if (price > highest) {
-      highest = price;
-      filtered.push(price);
-    }
-  }
+//   return max;
 
+//   // return max;
+
+//   // let highest = Math.max(uniquePrices);
+//   // let lowest = Math.min(uniquePrices);
+
+//   // if (Math.max(hashmap[highest]) > Math.min(hashmap[lowest])) return (highest-lowest);
+
+// }
 
 
-}
+// /**
+//  * @param {number[]} prices
+//  * @return {number}
+//  */
+// var maxProfit = function(prices) {
+
+//   let checks = [];
+
+//   let lowest = 10001;
+//   let highest = -10001;
+
+//   for (let price of prices) {
+//     if (price < lowest) {
+//       lowest = price;
+//       checks.push({lowest, highest, difference: highest-lowest})
+//     } 
+//     if (price > highest) {
+//       highest = price;
+//       checks.push({lowest,highest, difference: highest-lowest})
+//     }
+//   }
+
+//   console.log(checks);
+
+//   return Math.max(0, ...(checks.map(ch => ch.difference)));
+
+// }
+
+
+// /**
+//  * @param {number[]} prices
+//  * @return {number}
+//  */
+// var maxProfit = function(prices) {
+
+//   const filtered = [];
+//   let lowest = 10001;
+//   let highest = -10001;
+
+//   for (let price of prices) {
+//     if (price < lowest) {
+//       lowest = price;
+//       filtered.push(price);
+//     } 
+//     if (price > highest) {
+//       highest = price;
+//       filtered.push(price);
+//     }
+//   }
+
+
+
+// }
 
 
 
@@ -192,4 +192,31 @@ var maxProfit = function(prices) {
   }
 
   return max;
+}
+
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+
+  let max = 0;
+  let lowest = prices[0];
+  let highest = lowest;
+
+  for (let price of prices) {
+    if (price > highest) {
+      highest = price;
+      max = Math.max(highest-lowest, max);
+    } 
+    if (price < lowest) {
+      lowest = price;
+      highest = price;
+      max = Math.max(highest-lowest, max);
+    }
+  }
+
+  return max;
+
 }
