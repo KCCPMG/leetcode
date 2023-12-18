@@ -8,7 +8,8 @@ var maxProductDifference = function(nums) {
     .slice(0,4)
     .sort((a,b) => a-b);
 
-  for (let num of nums.slice(4)) {
+  for (let i=4; i<nums.length; i++) {
+    let num = nums[i];
     if (num > secondHighest) {
       if (num > highest) {
         secondHighest = highest;
