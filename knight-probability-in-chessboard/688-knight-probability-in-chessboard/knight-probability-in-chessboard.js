@@ -6,36 +6,6 @@
  * @return {number}
  */
 var knightProbability = function(n, k, row, column) {
-  if (row < 0 || row >= n || column < 0 || column >= n) {
-    return 0;
-  }
-  else if (k === 0) return 1;
-  else {
-    // return (
-    //   knightProbability(n, k-1, row-2, column-1) +
-    //   knightProbability(n, k-1, row-2, column+1) +
-    //   knightProbability(n, k-1, row-1, column-2) +
-    //   knightProbability(n, k-1, row-1, column+2) +
-    //   knightProbability(n, k-1, row+2, column-1) +
-    //   knightProbability(n, k-1, row+2, column+1) +
-    //   knightProbability(n, k-1, row+1, column-2) +
-    //   knightProbability(n, k-1, row+1, column+2)
-    // ) / 8;
-    return (
-      (1/8) * knightProbability(n, k-1, row-2, column-1) +
-      (1/8) * knightProbability(n, k-1, row-2, column+1) +
-      (1/8) * knightProbability(n, k-1, row-1, column-2) +
-      (1/8) * knightProbability(n, k-1, row-1, column+2) +
-      (1/8) * knightProbability(n, k-1, row+2, column-1) +
-      (1/8) * knightProbability(n, k-1, row+2, column+1) +
-      (1/8) * knightProbability(n, k-1, row+1, column-2) +
-      (1/8) * knightProbability(n, k-1, row+1, column+2)
-    );
-  }
-};
-
-
-var knightProbability = function(n, k, row, column) {
   let board=[];
   for (let r=0; r<n; r++) {
     board[r] = [];
