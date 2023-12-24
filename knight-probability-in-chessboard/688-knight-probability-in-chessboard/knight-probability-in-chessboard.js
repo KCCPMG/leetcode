@@ -25,26 +25,26 @@ var knightProbability = function(n, k, row, column) {
     }
     for (let r=0; r<n; r++) {
       for (let c=0; c<n; c++) {
-        let row_p1 = board[r+2];
-        let row_p2 = board[r+1];
-        let row_p3 = board[r-1];
-        let row_p4 = board[r-2];
+        // let row_p1 = board[r+2];
+        // let row_p2 = board[r+1];
+        // let row_p3 = board[r-1];
+        // let row_p4 = board[r-2];
 
-        if (row_p1) {
-          newBoard[r][c] += row_p1[c+1]/8 || 0;
-          newBoard[r][c] += row_p1[c-1]/8 || 0;
+        if (board[r+2]) {
+          newBoard[r][c] += board[r+2][c+1]/8 || 0;
+          newBoard[r][c] += board[r+2][c-1]/8 || 0;
         }
-        if (row_p2) {
-          newBoard[r][c] += row_p2[c+2]/8 || 0;
-          newBoard[r][c] += row_p2[c-2]/8 || 0;
+        if (board[r+1]) {
+          newBoard[r][c] += board[r+1][c+2]/8 || 0;
+          newBoard[r][c] += board[r+1][c-2]/8 || 0;
         }
-        if (row_p3) {
-          newBoard[r][c] += row_p3[c+2]/8 || 0;
-          newBoard[r][c] += row_p3[c-2]/8 || 0;
+        if (board[r-1]) {
+          newBoard[r][c] += board[r-1][c+2]/8 || 0;
+          newBoard[r][c] += board[r-1][c-2]/8 || 0;
         }
-        if (row_p4) {
-          newBoard[r][c] += row_p4[c+1]/8 || 0;
-          newBoard[r][c] += row_p4[c-1]/8 || 0;
+        if (board[r-2]) {
+          newBoard[r][c] += board[r-2][c+1]/8 || 0;
+          newBoard[r][c] += board[r-2][c-1]/8 || 0;
         }
       }
     }
