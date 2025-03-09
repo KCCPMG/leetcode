@@ -11,10 +11,7 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function(list1, list2) {
-
-    console.log(list1, list2);
     if (list1 === null && list2 === null) return null;
-
 
     let head = new ListNode();
     if (list1 || list2) {
@@ -25,7 +22,6 @@ var mergeTwoLists = function(list1, list2) {
             head.val = list2.val;
             list2 = list2.next;
         }
-        console.log(head, list1, list2);
     }
     let cursor = head;
     while (list1 || list2) {
@@ -38,7 +34,6 @@ var mergeTwoLists = function(list1, list2) {
             cursor = cursor.next;
             list2 = list2.next;
         }
-        console.log(head, list1, list2);
     }
     return head;
 };
