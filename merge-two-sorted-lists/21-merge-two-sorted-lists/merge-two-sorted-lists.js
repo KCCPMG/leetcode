@@ -13,26 +13,26 @@
 var mergeTwoLists = function(list1, list2) {
     if (list1 === null && list2 === null) return null;
 
-    let head = new ListNode();
+    let h = new ListNode();
     if (list1 || list2) {
         if (list1 && (!list2  || list1.val < list2.val)) {
-            head.val = list1.val;
+            h.val = list1.val;
             list1 = list1.next;
         } else {
-            head.val = list2.val;
+            h.val = list2.val;
             list2 = list2.next;
         }
     }
-    let cursor = head;
+    let c = h;
     while (list1 || list2) {
         if (list1 && (!list2  || list1.val < list2.val)) {
-            cursor.next = new ListNode(list1.val);
+            c.next = new ListNode(list1.val);
             list1 = list1.next;
         } else {
-            cursor.next = new ListNode(list2.val);
+            c.next = new ListNode(list2.val);
             list2 = list2.next;
         }
-        cursor = cursor.next;
+        c = c.next;
     }
-    return head;
+    return h;
 };
