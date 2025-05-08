@@ -1,12 +1,13 @@
-
-
-
+/**
+ * @param {string} s
+ * @param {number} numRows
+ * @return {string}
+ */
 var convert = function(s, numRows) {
 
     if (numRows === 1) return s;
     
     stringArray = new Array(numRows).fill("");
-    console.log(stringArray);
     let loopSize = numRows * 2 - 2;
     let maxRowIndex = numRows - 1;
 
@@ -18,14 +19,6 @@ var convert = function(s, numRows) {
             let positionInLoop = stringIndex % loopSize;
             let lowerCandidate = currentlyExaminingRowIndex;
             let upperCandidate = loopSize - currentlyExaminingRowIndex;
-            // console.log({
-            //     stringIndex,
-            //     character: s[stringIndex],
-            //     currentlyExaminingRowIndex,
-            //     positionInLoop,
-            //     lowerCandidate,
-            //     upperCandidate
-            // })
             if (positionInLoop === lowerCandidate || positionInLoop === upperCandidate) {
                 stringArray[currentlyExaminingRowIndex] += s[stringIndex];
                 break;
@@ -33,7 +26,6 @@ var convert = function(s, numRows) {
 
             currentlyExaminingRowIndex++;
         }
-
 
     }
     return stringArray.join("");
