@@ -24,16 +24,6 @@ var threeSum = function(nums) {
     let leftIndex = 0;
     let rightIndex = hashmapKeysAsNumbers.length-1;
 
-    // while (leftIndex < rightIndex) {
-    //     let leftValue = hashmapKeysAsNumbers[leftIndex];
-    //     let rightValue = hashmapKeysAsNumbers[rightIndex];
-
-    //     if (leftValue == hashmapKeysAsNumbers[leftIndex-1]) leftIndex++;
-    //     if (rightValue == hashmapKeysAsNNumbers[rightIndex-1]) rightValue--;
-
-
-    // }
-
     for (let leftIndex=0; leftIndex<hashmapKeysAsNumbers.length; leftIndex++) {
         let leftValue = hashmapKeysAsNumbers[leftIndex];
         if (leftValue === 0) continue;
@@ -43,7 +33,7 @@ var threeSum = function(nums) {
             if (hashmap[target]) results.push([leftValue,leftValue,target]);           
         }
 
-        // all subsequent numbers will be higher, break here
+        // all subsequent numbers will be higher, continue here
         if (leftValue > 0) continue;
 
         for (let midIndex=leftIndex+1; midIndex<hashmapKeysAsNumbers.length; midIndex++) {
@@ -58,9 +48,7 @@ var threeSum = function(nums) {
 
             if (
                 target > midValue &&
-                hashmap[target] && 
-                target != leftValue &&
-                target != midValue
+                hashmap[target]
             ) {
                 results.push([leftValue, midValue, target]);
             }
