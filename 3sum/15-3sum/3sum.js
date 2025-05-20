@@ -96,7 +96,7 @@ var threeSum = function(nums) {
         }
 
         // all subsequent numbers will be higher, break here
-        // if (leftValue > 0) break;
+        if (leftValue > 0) continue;
 
         for (let midIndex=leftIndex+1; midIndex<hashmapKeysAsNumbers.length; midIndex++) {
             
