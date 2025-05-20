@@ -46,10 +46,7 @@ var threeSum = function(nums) {
             // there are no further valid numbers, no further checks worthwhile
             if (midValue > 0 && target < 0) break;
 
-            if (
-                target > midValue &&
-                hashmap[target]
-            ) {
+            if (target > midValue && hashmap[target]) {
                 results.push([leftValue, midValue, target]);
             }
         }
