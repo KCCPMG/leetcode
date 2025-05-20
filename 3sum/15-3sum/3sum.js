@@ -28,18 +28,18 @@ var threeSum = function(nums) {
 
         for (let j=i+1; j<keys.length; j++) {
             
-            let j_num = keys[j];
-            if (j_num == keys[j-1]) continue;
+            // let j_num = keys[j];
+            if (keys[j] == keys[j-1]) continue;
             
-            let target = 0 - (k + j_num);
+            let target = 0 - (k + keys[j]);
 
             if (
-                target > j_num &&
+                target > keys[j] &&
                 hm[target] && 
                 target != k &&
-                target != j_num
+                target != keys[j]
             ) {
-                results.push([k, j_num, target]);
+                results.push([k, keys[j], target]);
             }
         }
     }
