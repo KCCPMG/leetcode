@@ -19,7 +19,8 @@ var threeSum = function(nums) {
 
     for (let i=0; i<keys.length; i++) {
         let k = keys[i];
-        if (hm[k].length >= 2 && k != 0) {
+        if (k === 0) continue;
+        if (hm[k].length >= 2) {
             console.log("Multiples of: ", k);
             let target = 0 - (2 * k);
             if (hm[target]) results.push([k,k,target]);           
