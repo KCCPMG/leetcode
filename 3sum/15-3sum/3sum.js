@@ -14,12 +14,7 @@ var threeSum = function(nums) {
         } else hm[key] = [i];
     }
 
-    let keys = Object.keys(hm);
-    // let firstNegative = keys.findIndex(el => Number(el) < 0)
-    // if (firstNegative >= 0) {
-    //     keys = [...keys.splice(firstNegative).reverse(), ...keys]
-    // }
-    keys = keys.map(k => Number(k));
+    let keys = Object.keys(hm).map(k => Number(k));
     keys.sort((a,b) => (a-b));
 
     for (let i=0; i<keys.length; i++) {
@@ -49,33 +44,6 @@ var threeSum = function(nums) {
         }
     }
     if (hm[0]?.length > 2) results.push([0,0,0])
-
-    // for (let [k,v] of Object.entries(hm)) {
-    //     let k_num = Number(k);
-    //     if (v.length >= 2) {
-    //         let target = 0 - (2 * k_num);
-    //         if (hm[target]) results.push([k_num,k_num,target]);
-    //     } 
-
-
-    //     let startingIndex = keys.findIndex(k => k === k_num)
-
-    //     for (let i=startingIndex + 1; i<keys.length; i++) {
-            
-    //         let i_num = keys[i];
-    //         let target = 0 - (k_num + i_num);
-
-    //         if (
-    //             i_num != k_num && 
-    //             target > i_num && 
-    //             hm[target] &&
-    //             target != k_num
-    //         ) {
-    //             results.push([k_num, i_num, target]);
-    //         }
-    //     }
-
-    // }
 
     return results;
 };
