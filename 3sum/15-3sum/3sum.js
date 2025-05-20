@@ -72,29 +72,49 @@ var threeSum = function(nums) {
     // generate array with keys as numbers, effectively an ordered set
     hashmapKeysAsNumbers.sort((a,b) => (a-b));
 
+
+    let leftIndex = 0;
+    let rightIndex = hashmapKeysAsNumbers.length-1;
+
+    // while (leftIndex < rightIndex) {
+    //     let leftValue = hashmapKeysAsNumbers[leftIndex];
+    //     let rightValue = hashmapKeysAsNumbers[rightIndex];
+
+    //     if (leftValue == hashmapKeysAsNumbers[leftIndex-1]) leftIndex++;
+    //     if (rightValue == hashmapKeysAsNNumbers[rightIndex-1]) rightValue--;
+
+
+    // }
+
     for (let leftIndex=0; leftIndex<hashmapKeysAsNumbers.length; leftIndex++) {
-        let leftIndexValue = hashmapKeysAsNumbers[leftIndex];
-        if (leftIndexValue === 0) continue;
+        let leftValue = hashmapKeysAsNumbers[leftIndex];
+        if (leftValue === 0) continue;
         // if there are two or more instances of this number
-        if (hashmap[leftIndexValue].length >= 2) {
-            let target = - (2 * leftIndexValue);
-            if (hashmap[target]) results.push([leftIndexValue,leftIndexValue,target]);           
+        if (hashmap[leftValue].length >= 2) {
+            let target = - (2 * leftValue);
+            if (hashmap[target]) results.push([leftValue,leftValue,target]);           
         }
 
-        for (let j=leftIndex+1; j<hashmapKeysAsNumbers.length; j++) {
+        // all subsequent numbers will be higher, break here
+        // if (leftValue > 0) break;
+
+        for (let midIndex=leftIndex+1; midIndex<hashmapKeysAsNumbers.length; midIndex++) {
             
-            let j_num = hashmapKeysAsNumbers[j];
-            if (hashmapKeysAsNumbers[j] == hashmapKeysAsNumbers[j-1]) continue;
+            let midValue = hashmapKeysAsNumbers[midIndex];
+            if (midValue == hashmapKeysAsNumbers[midIndex-1]) continue;
             
-            let target = 0 - (leftIndexValue + hashmapKeysAsNumbers[j]);
+            let target = 0 - (leftValue + midValue);
+
+            // there are no further valid numbers, no further checks worthwhile
+            if (midValue > 0 && target < 0) break;
 
             if (
-                target > j_num &&
+                target > midValue &&
                 hashmap[target] && 
-                target != leftIndexValue &&
-                target != j_num
+                target != leftValue &&
+                target != midValue
             ) {
-                results.push([leftIndexValue, j_num, target]);
+                results.push([leftValue, midValue, target]);
             }
         }
     }
