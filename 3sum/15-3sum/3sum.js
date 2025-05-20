@@ -5,45 +5,44 @@
 var threeSum = function(nums) {
     const results = [];
 
-    const hm = {};
+    const hashmap = {};
 
     for (let i=0; i<nums.length; i++) {
         const key = nums[i];
-        if (hm[key]) {
-            hm[key].push(i);
-        } else hm[key] = [i];
+        if (hashmap[key]) {
+            hashmap[key].push(i);
+        } else hashmap[key] = [i];
     }
 
-    let keys = Object.keys(hm).map(k => Number(k));
+    let keys = Object.keys(hashmap).map(k => Number(k));
     keys.sort((a,b) => (a-b));
 
     for (let i=0; i<keys.length; i++) {
         let k = keys[i];
         if (k === 0) continue;
-        if (hm[k].length >= 2) {
-            console.log("Multiples of: ", k);
-            let target = 0 - (2 * k);
-            if (hm[target]) results.push([k,k,target]);           
+        if (hashmap[k].length >= 2) {
+            let target = - (2 * k);
+            if (hashmap[target]) results.push([k,k,target]);           
         }
 
         for (let j=i+1; j<keys.length; j++) {
             
-            // let j_num = keys[j];
+            let j_num = keys[j];
             if (keys[j] == keys[j-1]) continue;
             
             let target = 0 - (k + keys[j]);
 
             if (
-                target > keys[j] &&
-                hm[target] && 
+                target > j_num &&
+                hashmap[target] && 
                 target != k &&
-                target != keys[j]
+                target != j_num
             ) {
-                results.push([k, keys[j], target]);
+                results.push([k, j_num, target]);
             }
         }
     }
-    if (hm[0]?.length > 2) results.push([0,0,0])
+    if (hashmap[0]?.length > 2) results.push([0,0,0])
 
     return results;
 };
