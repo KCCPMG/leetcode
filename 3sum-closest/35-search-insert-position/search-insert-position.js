@@ -17,12 +17,10 @@ var searchInsert = function(nums, target) {
     let midpoint = Math.floor((end + start) / 2);
 
     while (true) {
-        console.log(start, midpoint, end);
         const midpointValue = nums[midpoint];
         if (midpointValue === target) return midpoint;
 
         if (midpointValue < target) {
-            console.log("midpointValue < target")
             if ((end - midpoint) <= 1) return end;
             else {
                 start = midpoint;
@@ -30,7 +28,6 @@ var searchInsert = function(nums, target) {
             }
         }
         else if (midpointValue > target) {
-            console.log("midpointValue > target")
             if ((midpoint - start) <= 1) return midpoint;
             else {
                 end = midpoint;
