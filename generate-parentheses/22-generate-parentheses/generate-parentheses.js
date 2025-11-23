@@ -9,7 +9,7 @@ function completeStrings(strStart, depth, open, closed) {
     if (open == depth && closed == depth) return [strStart];
 
     else if (open == depth) {
-        // return completeStrings(strStart + ")", depth, open, closed+1);
+        // avoid filling out rest of string recursively
         return [strStart + ")".repeat(open-closed)];
     }
 
