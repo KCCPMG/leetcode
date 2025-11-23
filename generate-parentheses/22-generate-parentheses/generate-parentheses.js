@@ -9,7 +9,8 @@ function completeStrings(strStart, depth, open, closed) {
     if (open == depth && closed == depth) return [strStart];
 
     else if (open == depth) {
-        return completeStrings(strStart + ")", depth, open, closed+1);
+        // return completeStrings(strStart + ")", depth, open, closed+1);
+        return [strStart + ")".repeat(open-closed)];
     }
 
     else {
