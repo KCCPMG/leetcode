@@ -1,7 +1,4 @@
-/**
- * @param {number} n
- * @return {string[]}
- */
+
 function completeStrings(strStart, depth, open, closed) {
     if (open == depth && closed == depth) return [strStart];
 
@@ -19,6 +16,10 @@ function completeStrings(strStart, depth, open, closed) {
     }
 }
 
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
 function generateParenthesis(n) {
     return completeStrings("(", n, 1, 0);
 }
