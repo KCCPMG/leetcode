@@ -1,4 +1,10 @@
-
+/**
+ * @param {string} strStart
+ * @param {number} depth
+ * @param {number} open
+ * @param {number} closed
+ * @return {string[]} 
+ */
 function completeStrings(strStart, depth, open, closed) {
     if (open == depth && closed == depth) return [strStart];
 
